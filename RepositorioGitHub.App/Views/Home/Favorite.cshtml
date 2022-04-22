@@ -1,0 +1,50 @@
+﻿@model RepositorioGitHub.Dominio.ActionResult<RepositorioGitHub.Dominio.FavoriteViewModel>
+@{
+ViewBag.Title = "Favorite";
+}
+
+<main>
+    <h2>Favoritos</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Linguagem</th>
+                    <th scope="col">Ultima Atualização</th>
+                    <th scope="col">Proprietário</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model?.Results != null)
+            {
+                foreach (var item in Model.Results)
+                {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(modelItem => item.Id)</th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Language)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UpdateLast)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Owner)
+                        </td>
+
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</main>
